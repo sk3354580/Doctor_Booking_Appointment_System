@@ -166,8 +166,8 @@
 								<div class="card-body">
 								
 									<!-- Checkout Form -->
-									<form action="https://dreamguys.co.in/demo/doccure/booking-success.html">
-									
+									<form action="{% url 'checkout' %}" method="post">
+									{% csrf_token %}
 										<!-- Personal Information -->
 										<div class="info-widget">
 											<h4 class="card-title">Personal Information</h4>
@@ -175,25 +175,25 @@
 												<div class="col-md-6 col-sm-12">
 													<div class="form-group card-label">
 														<label>First Name</label>
-														<input class="form-control" type="text">
+														<input class="form-control" type="text" name="cfname">
 													</div>
 												</div>
 												<div class="col-md-6 col-sm-12">
 													<div class="form-group card-label">
 														<label>Last Name</label>
-														<input class="form-control" type="text">
+														<input class="form-control" type="text" name="clname">
 													</div>
 												</div>
 												<div class="col-md-6 col-sm-12">
 													<div class="form-group card-label">
 														<label>Email</label>
-														<input class="form-control" type="email">
+														<input class="form-control" type="email" name="cemail">
 													</div>
 												</div>
 												<div class="col-md-6 col-sm-12">
 													<div class="form-group card-label">
 														<label>Phone</label>
-														<input class="form-control" type="text">
+														<input class="form-control" type="text" name="cmnumber">
 													</div>
 												</div>
 											</div>
@@ -215,31 +215,31 @@
 													<div class="col-md-6">
 														<div class="form-group card-label">
 															<label for="card_name">Name on Card</label>
-															<input class="form-control" id="card_name" type="text">
+															<input class="form-control" id="card_name" type="text" name="nameoncard">
 														</div>
 													</div>
 													<div class="col-md-6">
 														<div class="form-group card-label">
 															<label for="card_number">Card Number</label>
-															<input class="form-control" id="card_number" placeholder="1234  5678  9876  5432" type="text">
+															<input class="form-control" id="card_number" placeholder="1234  5678  9876  5432" type="text" name="cardnumber">
 														</div>
 													</div>
 													<div class="col-md-4">
 														<div class="form-group card-label">
 															<label for="expiry_month">Expiry Month</label>
-															<input class="form-control" id="expiry_month" placeholder="MM" type="text">
+															<input class="form-control" id="expiry_month" placeholder="MM" type="text" name="expirymonth">
 														</div>
 													</div>
 													<div class="col-md-4">
 														<div class="form-group card-label">
 															<label for="expiry_year">Expiry Year</label>
-															<input class="form-control" id="expiry_year" placeholder="YY" type="text">
+															<input class="form-control" id="expiry_year" placeholder="YY" type="text" name="expiryyear">
 														</div>
 													</div>
 													<div class="col-md-4">
 														<div class="form-group card-label">
 															<label for="cvv">CVV</label>
-															<input class="form-control" id="cvv" type="text">
+															<input class="form-control" id="cvv" type="text" name="cvv">
 														</div>
 													</div>
 												</div>

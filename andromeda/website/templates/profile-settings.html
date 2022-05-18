@@ -185,6 +185,7 @@
 			<!-- /Breadcrumb -->
 			
 			<!-- Page Content -->
+			
 			<div class="content">
 				<div class="container-fluid">
 					<div class="row">
@@ -259,7 +260,8 @@
 								<div class="card-body">
 									
 									<!-- Profile Settings Form -->
-									<form>
+									<form action="{% url 'patientprofilesettings' %}" method="post">
+										{% csrf_token %}
 										<div class="row form-row">
 											<div class="col-12 col-md-12">
 												<div class="form-group">
@@ -270,7 +272,7 @@
 														<div class="upload-img">
 															<div class="change-photo-btn">
 																<span><i class="fa fa-upload"></i> Upload Photo</span>
-																<input type="file" class="upload">
+																<input type="file" class="upload" name="pimage">
 															</div>
 															<small class="form-text text-muted">Allowed JPG, GIF or PNG. Max size of 2MB</small>
 														</div>
@@ -280,20 +282,20 @@
 											<div class="col-12 col-md-6">
 												<div class="form-group">
 													<label>First Name</label>
-													<input type="text" class="form-control" value="Richard">
+													<input type="text" class="form-control" value="Richard" name="pfname">
 												</div>
 											</div>
 											<div class="col-12 col-md-6">
 												<div class="form-group">
 													<label>Last Name</label>
-													<input type="text" class="form-control" value="Wilson">
+													<input type="text" class="form-control" value="Wilson" name="plname">
 												</div>
 											</div>
 											<div class="col-12 col-md-6">
 												<div class="form-group">
 													<label>Date of Birth</label>
 													<div class="cal-icon">
-														<input type="text" class="form-control datetimepicker" value="24-07-1983">
+														<input type="text" class="form-control"  name="pdob">
 													</div>
 												</div>
 											</div>
@@ -315,43 +317,43 @@
 											<div class="col-12 col-md-6">
 												<div class="form-group">
 													<label>Email ID</label>
-													<input type="email" class="form-control" value="richard@example.com">
+													<input type="email" class="form-control" value="richard@example.com" name="pemail">
 												</div>
 											</div>
 											<div class="col-12 col-md-6">
 												<div class="form-group">
 													<label>Mobile</label>
-													<input type="text" value="+1 202-555-0125" class="form-control">
+													<input type="text"  class="form-control" name="pmnumber">
 												</div>
 											</div>
 											<div class="col-12">
 												<div class="form-group">
 												<label>Address</label>
-													<input type="text" class="form-control" value="806 Twin Willow Lane">
+													<input type="text" class="form-control" value="806 Twin Willow Lane" name="paddress">
 												</div>
 											</div>
 											<div class="col-12 col-md-6">
 												<div class="form-group">
 													<label>City</label>
-													<input type="text" class="form-control" value="Old Forge">
+													<input type="text" class="form-control" value="Old Forge" name="pcity">
 												</div>
 											</div>
 											<div class="col-12 col-md-6">
 												<div class="form-group">
 													<label>State</label>
-													<input type="text" class="form-control" value="Newyork">
+													<input type="text" class="form-control" value="Newyork" name="pstate">
 												</div>
 											</div>
 											<div class="col-12 col-md-6">
 												<div class="form-group">
 													<label>Zip Code</label>
-													<input type="text" class="form-control" value="13420">
+													<input type="text" class="form-control" value="13420" name="pzipcode">
 												</div>
 											</div>
 											<div class="col-12 col-md-6">
 												<div class="form-group">
 													<label>Country</label>
-													<input type="text" class="form-control" value="United States">
+													<input type="text" class="form-control" value="United States" name="pcountry">
 												</div>
 											</div>
 										</div>
@@ -368,6 +370,7 @@
 				</div>
 
 			</div>		
+			
 			<!-- /Page Content -->
    
 			<!-- Footer -->

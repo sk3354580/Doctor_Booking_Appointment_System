@@ -85,3 +85,7 @@ def logout(request):
         auth.logout(request)
     return HttpResponse('Logout successful!!')
 
+def logouts(request):
+    if request.method == 'POST':
+        auth.logout(request)
+    return HttpResponse('Logout successful!!')

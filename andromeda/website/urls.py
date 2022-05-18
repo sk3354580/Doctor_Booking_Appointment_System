@@ -29,9 +29,9 @@ urlpatterns = [
     path('login.html',views.login,name="login"),
     path('my-patients.html',views.mypatients, name="mypatients"),
     path('patient-dashboard.html',views.patientdashboard, name="patientdashboard"),
-    path('patient-profile.html',views.patientprofile, name="patientprofile"),
+    path('profile-settings.html',views.patientprofilesettings, name="patientprofilesettings"),
     path('privacy-policy.html',views.privacypolicy, name="privacypolicy"),
-    path('profile-settings.html',views.profilesettings, name="profilesettings"),
+    path('patient-profile.html',views.patientprofile, name="patientprofile"),
     path('register.html',views.register, name="register"),
     path('reviews.html',views.reviews, name="reviews"),
     path('schedule-timings.html',views.scheduletimings, name="scheduletimings"),
@@ -40,6 +40,10 @@ urlpatterns = [
     path('term-condition.html',views.termcondition, name="termcondition"),
     path('video-call.html',views.videocall, name="videocall"),
     path('voice-call.html',views.voicecall, name="voicecall"),
-    
+
+    path('all_doctors', views.all_doctors, name="all_doctors"),
+    path('doctor_info/<int:ids>', views.doctor_info, name="doctor_info"),
+    path('doctor-edit/<int:id>', views.doctor_edit, name="doctor-edit"),
+    path('doctor-delete/<int:id>', views.doctor_delete, name="doctor-delete"),
 
 ]

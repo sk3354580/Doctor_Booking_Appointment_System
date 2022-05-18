@@ -1,6 +1,9 @@
 from django.shortcuts import render,redirect,HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import auth
+
+from website.models import doctor_profile
+
 # Create your views here.
 def admine(request):
     return render(request,'admin.html')
@@ -12,8 +15,13 @@ def componentsw(request):
     return render(request,'componentsw.html')
 def data_tables(request):
     return render(request,'data-tables.html')
+
+
 def doctor_list(request):
-    return render(request,'doctor-list.html')
+    doctors = doctor_profile.objects.all()
+    return render(request,'doctor-list.html', {'doctors': doctors})
+
+
 def error_404(request):
     return render(request,'error-404.html')
 def error_500(request):
@@ -44,7 +52,7 @@ def loginw(request):
         user = auth.authenticate(username=request.POST['username'],password = request.POST['password'])
         if user is not None:
             auth.login(request,user)
-            return HttpResponse('Login Successfull!!')
+            return redirect(admine)
         else:
             return render (request,'loginw.html', {'error':'Username or password is incorrect!'})
     else:
@@ -72,7 +80,7 @@ def registerw(request):
             except User.DoesNotExist:
                 user = User.objects.create_user(request.POST['username'],password=request.POST['password1'],email=request.POST['email'])
                 auth.login(request,user)
-                return HttpResponse('signup completed!!')
+                return redirect(loginw)
         else:
             return render (request,'registerw.html', {'error':'Password does not match!'})
     else:

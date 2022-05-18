@@ -121,7 +121,7 @@
 								</ul>
 							</li>
 							<li>
-								<a href="{% url 'admine' %}" target="_blank">Admin</a>
+								<a href="{% url 'loginw' %}" target="_blank">Admin</a>
 							</li>
 							<li class="login-link">
 								<a href="login.html">Login / Signup</a>
@@ -289,7 +289,7 @@
 						<div class="col-md-7 col-lg-8 col-xl-9">
 						
 							<!-- Basic Information -->
-							<form action="{% url 'doctorprofilesettings' %}" method="post">
+							<form action="{% url 'doctorprofilesettings' %}" method="post" enctype="multipart/form-data">
 							{% csrf_token %}
 							<!-- Basic Information -->
 							<div class="card">

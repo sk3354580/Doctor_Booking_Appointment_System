@@ -70,7 +70,7 @@ def doctorprofile(request):
     return render(request,'doctor-profile.html')
 def doctorprofilesettings(request):
     if request.method == 'POST':
-        image = request.POST['image']
+        image = request.FILES['image']
         username = request.POST['username']
         email = request.POST['email']
         firstname = request.POST['fname']
@@ -100,7 +100,7 @@ def doctorprofilesettings(request):
         memberships = request.POST['memberships']
         registrations = request.POST['registrations']
         registrationyear = request.POST['registrationyear']
-        clinic_image = request.POST['clinicimage']
+        clinic_image = request.FILES['clinicimage']
         b = doctor_profile(username=username,
                                first_name=firstname,
                                last_name=lastname,
@@ -247,7 +247,8 @@ def all_doctors(request):
 
 def doctor_info(request, ids):
     a = doctor_profile.objects.get(id=ids)
-    return render(request, "doctor-profile.html", {'detail': a})
+    # return render(request, "doctor-profile.html", {'detail': a})
+    return render(request, "practice.html", {'detail': a})
 
 
 def doctor_edit(request, id):

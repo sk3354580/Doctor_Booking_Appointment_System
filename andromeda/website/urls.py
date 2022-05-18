@@ -41,9 +41,4 @@ urlpatterns = [
     path('video-call',views.videocall, name="videocall"),
     path('voice-call',views.voicecall, name="voicecall"),
 
-    path('all_doctors', views.all_doctors, name="all_doctors"),
-    path('doctor_info/<int:ids>', views.doctor_info, name="doctor_info"),
-    path('doctor-edit/<int:id>', views.doctor_edit, name="doctor-edit"),
-    path('doctor-delete/<int:id>', views.doctor_delete, name="doctor-delete"),
-
 ]

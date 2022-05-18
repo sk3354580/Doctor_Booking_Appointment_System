@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
     
-<!-- Mirrored from dreamguys.co.in/demo/doccure/admin/doctor-list by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:51 GMT -->
+<!-- Mirrored from dreamguys.co.in/demo/doccure/admin/doctor-list by HTTrack adminwebsite Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:51 GMT -->
 <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
@@ -41,10 +41,10 @@
 			
 				<!-- Logo -->
                 <div class="header-left">
-                    <a href="admin" class="logo">
+                    <a href="index" class="logo">
 						<img src="{% static 'adminwebsite/img/logo.png' %}" alt="Logo">
 					</a>
-					<a href="admin" class="logo logo-small">
+					<a href="index" class="logo logo-small">
 						<img src="{% static 'adminwebsite/img/logo-small.png' %}" alt="Logo" width="30" height="30">
 					</a>
                 </div>
@@ -160,7 +160,7 @@
 							</div>
 							<a class="dropdown-item" href="profile">My Profile</a>
 							<a class="dropdown-item" href="settings">Settings</a>
-							<a class="dropdown-item" href="login">Logout</a>
+							<a class="dropdown-item" href="loginw">Logout</a>
 						</div>
 					</li>
 					<!-- /User Menu -->
@@ -220,7 +220,7 @@
 								<ul style="display: none;">
 									<li><a href="loginw"> Login </a></li>
 									<li><a href="registerw"> Register </a></li>
-									<li><a href="forgot-passwordw"> Forgot Password </a></li>
+									<li><a href="forgot-password"> Forgot Password </a></li>
 									<li><a href="lock-screen"> Lock Screen </a></li>
 								</ul>
 							</li>
@@ -232,13 +232,13 @@
 								</ul>
 							</li>
 							<li> 
-								<a href="blank-pagew"><i class="fe fe-file"></i> <span>Blank Page</span></a>
+								<a href="blank-page"><i class="fe fe-file"></i> <span>Blank Page</span></a>
 							</li>
 							<li class="menu-title"> 
 								<span>UI Interface</span>
 							</li>
 							<li> 
-								<a href="componentsw"><i class="fe fe-vector"></i> <span>Components</span></a>
+								<a href="components"><i class="fe fe-vector"></i> <span>Components</span></a>
 							</li>
 							<li class="submenu">
 								<a href="#"><i class="fe fe-layout"></i> <span> Forms </span> <span class="menu-arrow"></span></a>
@@ -289,6 +289,7 @@
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
                 <div class="content container-fluid">
+                <div class="content container-fluid">
 				
 					<!-- Page Header -->
 					<div class="page-header">
@@ -316,33 +317,212 @@
 													<th>Doctor Name</th>
 													<th>Speciality</th>
 													<th>Member Since</th>
-													<!-- <th>Earned</th> -->
-													<th>Actions</th>
+													<th>Earned</th>
+													<th>Account Status</th>
 													
 												</tr>
 											</thead>
 											<tbody>
-												{% for i in doctors %}
 												<tr>
 													<td>
 														<h2 class="table-avatar">
-															<!-- <a href="profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="../media/media{{i.image.url}}" alt="User Image"></a> -->
-															<a href="profile">{{i.username}}</a>
+															<a href="profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{% static 'adminwebsite/img/doctors/doctor-thumb-01.jpg' %}" alt="User Image"></a>
+															<a href="profile">Dr. Ruby Perrin</a>
 														</h2>
 													</td>
-													<td>{{i.Specialiazation}}</td>
+													<td>Dental</td>
 													
-													<td>{{i.Year_of_Registeration}}</td>
+													<td>14 Jan 2019 <br><small>02.59 AM</small></td>
 													
-													<!-- <td>$3100.00</td> -->
+													<td>$3100.00</td>
 													
 													<td>
-														<a href="{% url 'doctor_info' i.id %}" class="btn btn-primary">View</a>
+														<div class="status-toggle">
+															<input type="checkbox" id="status_1" class="check" checked>
+															<label for="status_1" class="checktoggle">checkbox</label>
+														</div>
 													</td>
 												</tr>
-												{% endfor %}
-												
-												
+												<tr>
+													<td>
+														<h2 class="table-avatar">
+															<a href="profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{% static 'adminwebsite/img/doctors/doctor-thumb-02.jpg' %}" alt="User Image"></a>
+															<a href="profile">Dr. Darren Elder</a>
+														</h2>
+													</td>
+													<td>Dental</td>
+													
+													<td>11 Jun 2019 <br><small>4.50 AM</small></td>
+													
+													<td>$5000.00</td>
+													
+													<td>
+														<div class="status-toggle">
+															<input type="checkbox" id="status_1" class="check" checked>
+															<label for="status_1" class="checktoggle">checkbox</label>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<h2 class="table-avatar">
+															<a href="profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{% static 'adminwebsite/img/doctors/doctor-thumb-03.jpg' %}" alt="User Image"></a>
+															<a href="profile">Dr. Deborah Angel</a>
+														</h2>
+													</td>
+													<td>Cardiology</td>
+													
+													<td>4 Jan 2018 <br><small>9.40 AM</small></td>
+													
+													<td>$3300.00</td>
+													
+													<td>
+														<div class="status-toggle">
+															<input type="checkbox" id="status_1" class="check" checked>
+															<label for="status_1" class="checktoggle">checkbox</label>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<h2 class="table-avatar">
+															<a href="profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{% static 'adminwebsite/img/doctors/doctor-thumb-04.jpg' %}" alt="User Image"></a>
+															<a href="profile">Dr. Sofia Brient</a>
+														</h2>
+													</td>
+													<td>Urology</td>
+													
+													<td>5 Jul 2019 <br><small>12.59 AM</small></td>
+													
+													<td>$3500.00</td>
+													
+													<td>
+														<div class="status-toggle">
+															<input type="checkbox" id="status_1" class="check" checked>
+															<label for="status_1" class="checktoggle">checkbox</label>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<h2 class="table-avatar">
+															<a href="profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{% static 'adminwebsite/img/doctors/doctor-thumb-05.jpg' %}" alt="User Image"></a>
+															<a href="profile">Dr. Marvin Campbell</a>
+														</h2>
+													</td>
+													<td>Orthopaedics</td>
+													
+													<td>24 Jan 2019 <br><small>02.59 AM</small></td>
+													
+													<td>$3700.00</td>
+													
+													<td>
+														<div class="status-toggle">
+															<input type="checkbox" id="status_1" class="check" checked>
+															<label for="status_1" class="checktoggle">checkbox</label>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<h2 class="table-avatar">
+															<a href="profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{% static 'adminwebsite/img/doctors/doctor-thumb-06.jpg' %}" alt="User Image"></a>
+															<a href="profile">Dr. Katharine Berthold</a>
+														</h2>
+													</td>
+													<td>Orthopaedics</td>
+													
+													<td>23 Mar 2019 <br><small>02.50 PM</small></td>
+													
+													<td>$4000.00</td>
+													
+													<td>
+														<div class="status-toggle">
+															<input type="checkbox" id="status_1" class="check" checked>
+															<label for="status_1" class="checktoggle">checkbox</label>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<h2 class="table-avatar">
+															<a href="profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{% static 'adminwebsite/img/doctors/doctor-thumb-07.jpg' %}" alt="User Image"></a>
+															<a href="profile">Dr. Linda Tobin</a>
+														</h2>
+													</td>
+													<td>Neurology</td>
+													
+													<td>14 Dec 2018 <br><small>01.59 AM</small></td>
+													
+													<td>$2000.00</td>
+													
+													<td>
+														<div class="status-toggle">
+															<input type="checkbox" id="status_1" class="check" checked>
+															<label for="status_1" class="checktoggle">checkbox</label>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<h2 class="table-avatar">
+															<a href="profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{% static 'adminwebsite/img/doctors/doctor-thumb-08.jpg' %}" alt="User Image"></a>
+															<a href="profile">Dr. Paul Richard</a>
+														</h2>
+													</td>
+													<td>Dermatology</td>
+													
+													<td>11 Jan 2019 <br><small>02.59 AM</small></td>
+													
+													<td>$3000.00</td>
+													
+													<td>
+														<div class="status-toggle">
+															<input type="checkbox" id="status_1" class="check" checked>
+															<label for="status_1" class="checktoggle">checkbox</label>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<h2 class="table-avatar">
+															<a href="profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{% static 'adminwebsite/img/doctors/doctor-thumb-09.jpg' %}" alt="User Image"></a>
+															<a href="profile">Dr. John Gibbs</a>
+														</h2>
+													</td>
+													<td>Dental</td>
+													
+													<td>21 Apr 2018 <br><small>02.59 PM</small></td>
+													
+													<td>$4100.00</td>
+													
+													<td>
+														<div class="status-toggle">
+															<input type="checkbox" id="status_1" class="check" checked>
+															<label for="status_1" class="checktoggle">checkbox</label>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<h2 class="table-avatar">
+															<a href="profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{% static 'adminwebsite/img/doctors/doctor-thumb-10.jpg' %}" alt="User Image"></a>
+															<a href="profile">Dr. Olga Barlow</a>
+														</h2>
+													</td>
+													<td>Dental</td>
+													
+													<td>15 Feb 2018 <br><small>03.59 AM</small></td>
+													
+													<td>$3500.00</td>
+													
+													<td>
+														<div class="status-toggle">
+															<input type="checkbox" id="status_1" class="check" checked>
+															<label for="status_1" class="checktoggle">checkbox</label>
+														</div>
+													</td>
+												</tr>
 											</tbody>
 										</table>
 									</div>
@@ -377,5 +557,5 @@
 		
     </body>
 
-<!-- Mirrored from dreamguys.co.in/demo/doccure/admin/doctor-list by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:51 GMT -->
+<!-- Mirrored from dreamguys.co.in/demo/doccure/admin/doctor-list by HTTrack adminwebsite Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:51 GMT -->
 </html>

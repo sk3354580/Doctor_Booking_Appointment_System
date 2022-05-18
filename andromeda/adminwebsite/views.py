@@ -15,8 +15,6 @@ def componentsw(request):
     return render(request,'componentsw.html')
 def data_tables(request):
     return render(request,'data-tables.html')
-
-
 def doctor_list(request):
     doctors = doctor_profile.objects.all()
     return render(request,'doctor-list.html', {'doctors': doctors})

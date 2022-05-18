@@ -1,7 +1,6 @@
-
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
-
+################search location suggestions
 class Location(models.Model):
     name = models.CharField(max_length=20)
 class speciality(models.Model):
@@ -11,7 +10,7 @@ class speciality(models.Model):
 
 class doctor_profile(models.Model):
     ############basic information
-    image = models.ImageField(upload_to='media')
+    doctor_images = models.ImageField(upload_to='images/')
     username = models.CharField(max_length=50)
     email = models.EmailField(max_length=50)
     first_name = models.CharField(max_length=50)
@@ -23,7 +22,7 @@ class doctor_profile(models.Model):
     ####clinic info###################
     clinic_name = models.CharField(max_length=40)
     clinic_address = models.CharField(max_length=100)
-    clinic_images = models.ImageField(upload_to='media')
+    clinic_images = models.ImageField(upload_to='images/')
     ###############contact details
     Address_line1 = models.CharField(max_length=200)
     Address_line2 = models.CharField(max_length=100)
@@ -55,7 +54,7 @@ class doctor_profile(models.Model):
     Year_of_Registeration = models.DateField(max_length=20)
     ####this is patient profile######################
 class patient_profile(models.Model):
-    image = models.ImageField(upload_to='media')
+    patient_images = models.ImageField(upload_to='images/')
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     Date_of_Birth = models.DateField(max_length=20)

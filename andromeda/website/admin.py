@@ -8,7 +8,7 @@ class special(admin.ModelAdmin):
     list_display = ['speciality']
 admin.site.register(speciality,special)
 class doctor(admin.ModelAdmin):
-    list_display = ('id','image','username','email', 'first_name','last_name', 'phoneNumber','Gender','Date_of_Birth',
+    list_display = ('id','doctor_images','username','email', 'first_name','last_name', 'phoneNumber','Gender','Date_of_Birth',
                         'Biography', 'clinic_name', 'clinic_address', 'clinic_images','Address_line1','Address_line2', 'City',
                         'State_Provice', 'Country','Postal_code',
                         'Pricing',
@@ -29,7 +29,7 @@ class doctor(admin.ModelAdmin):
 admin.site.register(doctor_profile,doctor)
 class patient(admin.ModelAdmin):
     list_display = ('id',
-                    'image',
+                    'patient_images',
                     'first_name',
                     'last_name',
                     'Date_of_Birth',

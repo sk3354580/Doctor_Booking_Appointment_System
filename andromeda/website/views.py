@@ -1,9 +1,6 @@
-
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-
-
 from . models import *
 # Create your views here.
 from django.shortcuts import render,redirect,HttpResponse
@@ -66,11 +63,10 @@ def doctorchangepassword(request):
 def doctordashboard(request):
     return render(request,'doctor-dashboard.html')
 def doctorprofile(request):
-
     return render(request,'doctor-profile.html')
 def doctorprofilesettings(request):
     if request.method == 'POST':
-        image = request.FILES['image']
+        doctor_images = request.FILES['image']
         username = request.POST['username']
         email = request.POST['email']
         firstname = request.POST['fname']
@@ -100,8 +96,9 @@ def doctorprofilesettings(request):
         memberships = request.POST['memberships']
         registrations = request.POST['registrations']
         registrationyear = request.POST['registrationyear']
-        clinic_image = request.FILES['clinicimage']
+        clinic_images = request.FILES['clinicimage']
         b = doctor_profile(username=username,
+                            doctor_images=doctor_images,
                                first_name=firstname,
                                last_name=lastname,
                                Biography=biography,
@@ -129,14 +126,13 @@ def doctorprofilesettings(request):
                                Year_of_Registeration=registrationyear,
                                email=email,
                                image=image,
-                               clinic_images=clinic_image,
+                               clinic_images=clinic_images,
                                Postal_code=postalcode,
                                phoneNumber=phone_number)
         b.save()
         return redirect(all_doctors)
     else:
         return render(request, 'doctor-profile-settings.html')
-
 def doctorregister(request):
     return render(request,'doctor-register.html')
 def editbilling(request):
@@ -151,12 +147,10 @@ def index(request):
     results=Location.objects.all
     special = speciality.objects.all
     return render(request, "index.html",{"location":results,"speciality":special})
-    # return render(request,'index.html')
 def index2(request):
     results = Location.objects.all
     special = speciality.objects.all
     return render(request, "index-2.html", {"location": results, "speciality": special})
-
 def invoiceview(request):
     return render(request,'invoice-view.html')
 def invoices(request):
@@ -177,7 +171,7 @@ def patientdashboard(request):
     return render(request,'patient-dashboard.html')
 def patientprofilesettings(request): 
     if request.method == 'POST':
-        image = request.FILES['pimage']
+        patient_images = request.FILES['pimage']
         first_name = request.POST['pfname']
         last_name = request.POST['plname']
         phoneNumber = request.POST['pmnumber']
@@ -190,7 +184,7 @@ def patientprofilesettings(request):
         zip_code =request.POST['pzipcode']
         Country =request.POST['pcountry']
         z = patient_profile(
-            image = image,
+            patient_images = patient_images,
             first_name = first_name,
             last_name = last_name,
             phoneNumber = phoneNumber,
@@ -237,40 +231,3 @@ def videocall(request):
 def voicecall(request):
     return render(request,'voice-call.html')
 ############################################################
-
-########################################################
-
-def all_doctors(request):
-    pizzas = patient_profile.objects.all()
-    return render(request, 'all_doctors.html', {'pizzas': pizzas})
-
-
-def doctor_info(request, ids):
-    a = patient_profile.objects.get(id=ids)
-    # return render(request, "doctor-profile.html", {'detail': a})
-    return render(request, "all_images.html", {'detail': a})
-
-
-def doctor_edit(request, id):
-    pizza_retrieved = doctor_profile.objects.get(id=id)
-    if request.method == "POST":
-        # pizza_retrieved.name = request
-        pizza_name = request.POST['name']
-        pizza_size = request.POST['size']
-        pizza_price = request.POST['price']
-
-        pizza_retrieved.name = pizza_name
-        pizza_retrieved.price = pizza_price
-        pizza_retrieved.size = pizza_size
-        pizza_retrieved.save()
-
-        return HttpResponseRedirect(reverse('pizza'))
-    else:
-        return render(request, "hello/pizza_edit.html", {'pizza': pizza_retrieved})
-
-
-def doctor_delete(request, id):
-    a = doctor_profile.objects.get(id=id)
-    a.delete()
-    return HttpResponseRedirect(reverse('all_doctors'))
-###################POpular section

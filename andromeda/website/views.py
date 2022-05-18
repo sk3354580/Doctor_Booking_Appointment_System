@@ -143,8 +143,8 @@ def editbilling(request):
     return render(request,'edit-billing.html')
 def editprescription(request):
     return render(request,'edit-prescription.html')
-def favorites(request):
-    return render(request,'favorites.html')
+def favourites(request):
+    return render(request,'favourites.html')
 def forgotpassword(request):
     return render(request,'forgot-password.html')
 def index(request):
@@ -177,7 +177,7 @@ def patientdashboard(request):
     return render(request,'patient-dashboard.html')
 def patientprofilesettings(request): 
     if request.method == 'POST':
-        image = request.POST['pimage']
+        image = request.FILES['pimage']
         first_name = request.POST['pfname']
         last_name = request.POST['plname']
         phoneNumber = request.POST['pmnumber']
@@ -241,14 +241,14 @@ def voicecall(request):
 ########################################################
 
 def all_doctors(request):
-    pizzas = doctor_profile.objects.all()
+    pizzas = patient_profile.objects.all()
     return render(request, 'all_doctors.html', {'pizzas': pizzas})
 
 
 def doctor_info(request, ids):
-    a = doctor_profile.objects.get(id=ids)
+    a = patient_profile.objects.get(id=ids)
     # return render(request, "doctor-profile.html", {'detail': a})
-    return render(request, "practice.html", {'detail': a})
+    return render(request, "all_images.html", {'detail': a})
 
 
 def doctor_edit(request, id):

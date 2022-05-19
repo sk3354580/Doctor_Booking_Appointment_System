@@ -7,6 +7,7 @@ urlpatterns = [
     path('appointments',views.appointments,name="appointments"),
     path('blank-page',views.blankpage, name="blankpage"),
     path('booking',views.booking, name="booking"),
+    path('bookings/<int:id>',views.bookings, name="bookings"),
     path('booking-success',views.bookingsuccess, name="bookingsuccess"),
     path('calendar',views.calender, name="calender"),
     path('change-password',views.changepassword, name="changepassword"),
@@ -16,7 +17,7 @@ urlpatterns = [
     path('components',views.components, name="components"),
     path('doctor-change-password',views.doctorchangepassword, name="doctorchangepassword"),
     path('doctor-dashboard',views.doctordashboard, name="doctordashboard"),
-    path('doctor-profile',views.doctorprofile, name="doctorprofile"),
+    path('doctor-profile/<int:id>',views.doctorprofile, name="doctorprofile"),
     path('doctor-profile-settings',views.doctorprofilesettings, name="doctorprofilesettings"),
     path('doctor-register',views.doctorregister, name="doctorregister"),
     path('edit-billing',views.editbilling, name="editbilling"),
@@ -40,6 +41,5 @@ urlpatterns = [
     path('term-condition',views.termcondition, name="termcondition"),
     path('video-call',views.videocall, name="videocall"),
     path('voice-call',views.voicecall, name="voicecall"),
-    path('all_hotels', views.display_hotel_images, name="all_hotels"),
-    path('all_doctors', views.all_doctors, name="all_doctors")
+
 ]

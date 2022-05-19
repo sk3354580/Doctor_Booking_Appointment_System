@@ -15,6 +15,8 @@ def blankpage(request):
     return render(request,'blank-page.html')
 def booking(request):
     return render(request,'booking.html')
+def bookings(request,id):
+    return render(request,'bookings.html')
 def bookingsuccess(request):
     return render(request,'booking-success.html')
 def calender(request):
@@ -62,8 +64,9 @@ def doctorchangepassword(request):
     return render(request,'doctor-change-password.html')
 def doctordashboard(request):
     return render(request,'doctor-dashboard.html')
-def doctorprofile(request):
-    return render(request,'doctor-profile.html')
+def doctorprofile(request ,id):
+    DOctorProFile = doctor_profile.objects.get(id=id)
+    return render(request,'doctor-profile.html', {'DOctorProFile':DOctorProFile})
 def doctorprofilesettings(request):
     if request.method == 'POST':
         doctor_images = request.FILES['image']
@@ -129,7 +132,7 @@ def doctorprofilesettings(request):
                                Postal_code=postalcode,
                                phoneNumber=phone_number)
         b.save()
-        return redirect('all_hotels')
+        return redirect('search')
     else:
         return render(request, 'doctor-profile-settings.html')
 def doctorregister(request):
@@ -220,7 +223,8 @@ def reviews(request):
 def scheduletimings(request):
     return render(request,'schedule-timings.html')
 def search(request):
-    return render(request,'search.html')
+    allDoctors = doctor_profile.objects.all()
+    return render(request,'search.html', {'allDoctors': allDoctors})
 def socialmedia(request):
     return render(request,'social-media.html')
 def termcondition(request):
@@ -230,6 +234,3 @@ def videocall(request):
 def voicecall(request):
     return render(request,'voice-call.html')
 ############################################################
-def all_doctors(request):
-    pizzas = doctor_profile.objects.all()
-    return render(request, 'doctor-profile.html', {'pizzas': pizzas})

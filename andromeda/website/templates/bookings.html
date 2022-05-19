@@ -44,13 +44,13 @@
 								<span></span>
 							</span>
 						</a>
-						<a href="index-2" class="navbar-brand logo">
+						<a href="{% url 'index2' %}" class="navbar-brand logo">
 							<img src="{% static 'website/img/logo.png' %}" class="img-fluid" alt="Logo">
 						</a>
 					</div>
 					<div class="main-menu-wrapper">
 						<div class="menu-header">
-							<a href="index-2" class="menu-logo">
+							<a href="{% url 'index2' %}" class="menu-logo">
 								<img src="{% static 'website/img/logo.png' %}" class="img-fluid" alt="Logo">
 							</a>
 							<a id="menu_close" class="menu-close" href="javascript:void(0);">
@@ -59,64 +59,64 @@
 						</div>
 						<ul class="main-nav">
 							<li>
-								<a href="index-2">Home</a>
+								<a href="{% url 'index2' %}">Home</a>
 							</li>
 							<li class="has-submenu">
 								<a href="#">Doctors <i class="fas fa-chevron-down"></i></a>
 								<ul class="submenu">
-									<li><a href="doctor-dashboard">Doctor Dashboard</a></li>
-									<li><a href="appointments">Appointments</a></li>
-									<li><a href="schedule-timings">Schedule Timing</a></li>
-									<li><a href="my-patients">Patients List</a></li>
-									<li><a href="patient-profile">Patients Profile</a></li>
-									<li><a href="chat-doctor">Chat</a></li>
-									<li><a href="invoices">Invoices</a></li>
-									<li><a href="doctor-profile-settings">Profile Settings</a></li>
-									<li><a href="reviews">Reviews</a></li>
-									<li><a href="doctor-register">Doctor Register</a></li>
+									<li><a href="{% url 'doctordashboard' %}">Doctor Dashboard</a></li>
+									<li><a href="{% url 'appointments' %}">Appointments</a></li>
+									<li><a href="{% url 'scheduletimings' %}">Schedule Timing</a></li>
+									<li><a href="{% url 'mypatients' %}">Patients List</a></li>
+									<li><a href="{% url 'patientprofile' %}">Patients Profile</a></li>
+									<li><a href="{% url 'chatdoctor' %}">Chat</a></li>
+							        <li><a href="{% url 'invoices' %}">Invoices</a></li>
+									<li><a href="{% url 'doctorprofilesettings' %}">Profile Settings</a></li>
+									<li><a href="{% url 'reviews' %}">Reviews</a></li>
+									<li><a href="{% url 'doctorregister' %}">Doctor Register</a></li>
 								</ul>
 							</li>	
 							<li class="has-submenu active">
 								<a href="#">Patients <i class="fas fa-chevron-down"></i></a>
 								<ul class="submenu">
-									<li><a href="search">Search Doctor</a></li>
-									<li><a href="doctor-profile">Doctor Profile</a></li>
-									<li class="active"><a href="booking">Booking</a></li>
-									<li><a href="checkout">Checkout</a></li>
-									<li><a href="booking-success">Booking Success</a></li>
-									<li><a href="patient-dashboard">Patient Dashboard</a></li>
-									<li><a href="favourites">Favourites</a></li>
-									<li><a href="chat">Chat</a></li>
-									<li><a href="profile-settings">Profile Settings</a></li>
-									<li><a href="change-password">Change Password</a></li>
+									<li><a href="{% url 'search' %}">Search Doctor</a></li>
+									<li><a href="{% url 'doctorprofile' bookingProfile.id  %}">Doctor Profile</a></li>
+									<li class="active"><a href="{% url 'booking' %}">Booking</a></li>
+									<li><a href="{% url 'checkout' %}">Checkout</a></li>
+									<li><a href="{% url 'bookingsuccess' %}">Booking Success</a></li>
+									<li><a href="{% url 'patientdashboard' %}">Patient Dashboard</a></li>
+									<li><a href="{% url 'favourites' %}">Favourites</a></li>
+									<li><a href="{% url 'chat' %}">Chat</a></li>
+									<li><a href="{% url 'patientprofilesettings' %}">Profile Settings</a></li>
+									<li><a href="{% url 'changepassword' %}">Change Password</a></li>
 								</ul>
 							</li>	
 							<li class="has-submenu">
 								<a href="#">Pages <i class="fas fa-chevron-down"></i></a>
 								<ul class="submenu">
-									<li><a href="voice-call">Voice Call</a></li>
-									<li><a href="video-call">Video Call</a></li>
-									<li><a href="search">Search Doctors</a></li>
-									<li><a href="calendar">Calendar</a></li>
-									<li><a href="components">Components</a></li>
+									<li><a href="{% url 'voicecall' %}">Voice Call</a></li>
+									<li><a href="{% url 'videocall' %}">Video Call</a></li>
+									<li><a href="{% url 'search' %}">Search Doctors</a></li>
+									<li><a href="{% url 'calender' %}">Calendar</a></li>
+									<li><a href="{% url 'components' %}">Components</a></li>
 									<li class="has-submenu">
-										<a href="invoices">Invoices</a>
+										<a href="{% url 'invoices' %}">Invoices</a>
 										<ul class="submenu">
-											<li><a href="invoices">Invoices</a></li>
-											<li><a href="invoice-view">Invoice View</a></li>
+											<li><a href="{% url 'invoices' %}">Invoices</a></li>
+											<li><a href="{% url 'invoiceview' %}">Invoice View</a></li>
 										</ul>
 									</li>
-									<li><a href="blank-page">Starter Page</a></li>
-									<li><a href="login">Login</a></li>
-									<li><a href="register">Register</a></li>
-									<li><a href="forgot-password">Forgot Password</a></li>
+									<li><a href="{% url 'blankpage' %}">Starter Page</a></li>
+									<li><a href="{% url 'login' %}">Login</a></li>
+									<li><a href="{% url 'register' %}">Register</a></li>
+									<li><a href="{% url 'forgotpassword' %}">Forgot Password</a></li>
 								</ul>
 							</li>
 							<li>
 								<a href="{% url 'loginw' %}" target="_blank">Admin</a>
 							</li>
 							<li class="login-link">
-								<a href="login">Login / Signup</a>
+								<a href="{% url 'login' %}">Login / Signup</a>
 							</li>
 						</ul>	 
 					</div>		 
@@ -131,7 +131,7 @@
 							</div>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link header-login" href="login">login / Signup </a>
+							<a class="nav-link header-login" href="{% url 'login' %}">login / Signup </a>
 						</li>
 					</ul>
 				</nav>
@@ -145,7 +145,7 @@
 						<div class="col-md-12 col-12">
 							<nav aria-label="breadcrumb" class="page-breadcrumb">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index-2">Home</a></li>
+									<li class="breadcrumb-item"><a href="{% url 'index2' %}">Home</a></li>
 									<li class="breadcrumb-item active" aria-current="page">Booking</li>
 								</ol>
 							</nav>
@@ -167,10 +167,10 @@
 								<div class="card-body">
 									<div class="booking-doc-info">
 										<a href="doctor-profile" class="booking-doc-img">
-											<img src="{% static 'website/img/doctors/doctor-thumb-02.jpg' %}" alt="User Image">
+											<img src="{{bookingProfile.doctor_images.url}}" alt="User Image">
 										</a>
 										<div class="booking-info">
-											<h4><a href="doctor-profile">Dr. Darren Elder</a></h4>
+											<h4><a href="doctor-profile">{{bookingProfile.username}}</a></h4>
 											<div class="rating">
 												<i class="fas fa-star filled"></i>
 												<i class="fas fa-star filled"></i>
@@ -179,7 +179,7 @@
 												<i class="fas fa-star"></i>
 												<span class="d-inline-block average-rating">35</span>
 											</div>
-											<p class="text-muted mb-0"><i class="fas fa-map-marker-alt"></i> Newyork, USA</p>
+											<p class="text-muted mb-0"><i class="fas fa-map-marker-alt"></i>{{bookingProfile.Address_line1}}</p>
 										</div>
 									</div>
 								</div>
@@ -342,7 +342,7 @@
 							
 							<!-- Submit Section -->
 							<div class="submit-section proceed-btn text-right">
-								<a href="checkout" class="btn btn-primary submit-btn">Proceed to Pay</a>
+								<a href="{% url 'checkout' %}" class="btn btn-primary submit-btn">Proceed to Pay</a>
 							</div>
 							<!-- /Submit Section -->
 							
@@ -400,11 +400,11 @@
 								<div class="footer-widget footer-menu">
 									<h2 class="footer-title">For Patients</h2>
 									<ul>
-										<li><a href="search"><i class="fas fa-angle-double-right"></i> Search for Doctors</a></li>
-										<li><a href="login"><i class="fas fa-angle-double-right"></i> Login</a></li>
-										<li><a href="register"><i class="fas fa-angle-double-right"></i> Register</a></li>
-										<li><a href="booking"><i class="fas fa-angle-double-right"></i> Booking</a></li>
-										<li><a href="patient-dashboard"><i class="fas fa-angle-double-right"></i> Patient Dashboard</a></li>
+										<li><a href="{% url 'search' %}"><i class="fas fa-angle-double-right"></i> Search for Doctors</a></li>
+										<li><a href="{% url 'login' %}"><i class="fas fa-angle-double-right"></i> Login</a></li>
+										<li><a href="{% url 'register' %}"><i class="fas fa-angle-double-right"></i> Register</a></li>
+										<li><a href="{% url 'booking' %}"><i class="fas fa-angle-double-right"></i> Booking</a></li>
+										<li><a href="{% url 'patientdashboard' %}"><i class="fas fa-angle-double-right"></i> Patient Dashboard</a></li>
 									</ul>
 								</div>
 								<!-- /Footer Widget -->
@@ -417,11 +417,11 @@
 								<div class="footer-widget footer-menu">
 									<h2 class="footer-title">For Doctors</h2>
 									<ul>
-										<li><a href="appointments"><i class="fas fa-angle-double-right"></i> Appointments</a></li>
-										<li><a href="chat"><i class="fas fa-angle-double-right"></i> Chat</a></li>
-										<li><a href="login"><i class="fas fa-angle-double-right"></i> Login</a></li>
-										<li><a href="doctor-register"><i class="fas fa-angle-double-right"></i> Register</a></li>
-										<li><a href="doctor-dashboard"><i class="fas fa-angle-double-right"></i> Doctor Dashboard</a></li>
+										<li><a href="{% url 'appointments' %}"><i class="fas fa-angle-double-right"></i> Appointments</a></li>
+										<li><a href="{% url 'chat' %}"><i class="fas fa-angle-double-right"></i> Chat</a></li>
+										<li><a href="{% url 'login' %}"><i class="fas fa-angle-double-right"></i> Login</a></li>
+										<li><a href="{% url 'doctorregister' %}"><i class="fas fa-angle-double-right"></i> Register</a></li>
+										<li><a href="{% url 'doctordashboard' %}"><i class="fas fa-angle-double-right"></i> Doctor Dashboard</a></li>
 									</ul>
 								</div>
 								<!-- /Footer Widget -->

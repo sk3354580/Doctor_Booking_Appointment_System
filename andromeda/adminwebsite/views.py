@@ -1,12 +1,21 @@
 from django.shortcuts import render,redirect,HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import auth
-
-from website.models import doctor_profile
-
+from website.models import *
 # Create your views here.
 def admine(request):
-    return render(request,'admin.html')
+    allPatients = patient_profile.objects.all()
+    allDoctors = doctor_profile.objects.all()
+    countappointment = appointment_booking.objects.all().count()
+    countdoctor = doctor_profile.objects.all().count()
+    countpatient = patient_profile.objects.all().count()
+    context = {'countpatient': countpatient,
+               'countdoctor': countdoctor,
+               'countappointment':countappointment,
+               'allDoctors': allDoctors,
+               'allPatients':allPatients}
+
+    return render(request,'admin.html',context)
 def appointment_list(request):
     return render(request,'appointment-list.html')
 def blank_pagew(request):
@@ -16,10 +25,8 @@ def componentsw(request):
 def data_tables(request):
     return render(request,'data-tables.html')
 def doctor_list(request):
-    doctors = doctor_profile.objects.all()
-    return render(request,'doctor-list.html', {'doctors': doctors})
-
-
+    doctorList = doctor_profile.objects.all()
+    return render(request,'doctor-list.html', {'doctorList': doctorList})
 def error_404(request):
     return render(request,'error-404.html')
 def error_500(request):
@@ -56,7 +63,8 @@ def loginw(request):
     else:
         return render(request,'loginw.html')
 def patient_list(request):
-    return render(request,'patient-list.html')
+    patientList = patient_profile.objects.all()
+    return render(request,'patient-list.html' ,{'patientList':patientList})
 def profilew(request):
     return render(request,'profilew.html')
 def reviewsw(request):

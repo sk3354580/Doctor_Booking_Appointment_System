@@ -16,7 +16,8 @@ def blankpage(request):
 def booking(request):
     return render(request,'booking.html')
 def bookings(request,id):
-    return render(request,'bookings.html')
+    bookingProFile = doctor_profile.objects.get(id=id)
+    return render(request,'bookings.html' ,{'bookingProfile':bookingProFile})
 def bookingsuccess(request):
     return render(request,'booking-success.html')
 def calender(request):
@@ -68,6 +69,7 @@ def doctorprofile(request ,id):
     DOctorProFile = doctor_profile.objects.get(id=id)
     return render(request,'doctor-profile.html', {'DOctorProFile':DOctorProFile})
 def doctorprofilesettings(request):
+    special = speciality.objects.all
     if request.method == 'POST':
         doctor_images = request.FILES['image']
         username = request.POST['username']
@@ -134,7 +136,7 @@ def doctorprofilesettings(request):
         b.save()
         return redirect('search')
     else:
-        return render(request, 'doctor-profile-settings.html')
+        return render(request, 'doctor-profile-settings.html',{"speciality":special})
 def doctorregister(request):
     return render(request,'doctor-register.html')
 def editbilling(request):

@@ -40,5 +40,6 @@ urlpatterns = [
     path('term-condition',views.termcondition, name="termcondition"),
     path('video-call',views.videocall, name="videocall"),
     path('voice-call',views.voicecall, name="voicecall"),
-
+    path('all_hotels', views.display_hotel_images, name="all_hotels"),
+    path('all_doctors', views.all_doctors, name="all_doctors")
 ]

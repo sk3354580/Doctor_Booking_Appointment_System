@@ -98,7 +98,7 @@ def doctorprofilesettings(request):
         registrationyear = request.POST['registrationyear']
         clinic_images = request.FILES['clinicimage']
         b = doctor_profile(username=username,
-                            doctor_images=doctor_images,
+                               doctor_images=doctor_images,
                                first_name=firstname,
                                last_name=lastname,
                                Biography=biography,
@@ -125,12 +125,11 @@ def doctorprofilesettings(request):
                                Year=year,
                                Year_of_Registeration=registrationyear,
                                email=email,
-                               image=image,
                                clinic_images=clinic_images,
                                Postal_code=postalcode,
                                phoneNumber=phone_number)
         b.save()
-        return redirect(all_doctors)
+        return redirect('all_hotels')
     else:
         return render(request, 'doctor-profile-settings.html')
 def doctorregister(request):
@@ -231,3 +230,6 @@ def videocall(request):
 def voicecall(request):
     return render(request,'voice-call.html')
 ############################################################
+def all_doctors(request):
+    pizzas = doctor_profile.objects.all()
+    return render(request, 'doctor-profile.html', {'pizzas': pizzas})

@@ -91,9 +91,6 @@ def registerw(request):
             return render (request,'registerw.html', {'error':'Password does not match!'})
     else:
         return render(request,'registerw.html')
-
-
-
 def logout(request):
     if request.method == 'POST':
         auth.logout(request)

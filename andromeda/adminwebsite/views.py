@@ -65,8 +65,12 @@ def loginw(request):
 def patient_list(request):
     patientList = patient_profile.objects.all()
     return render(request,'patient-list.html' ,{'patientList':patientList})
-def profilew(request):
-    return render(request,'profilew.html')
+def profilew(request,id):
+    ProFileW = doctor_profile.objects.get(id=id)
+    return render(request, 'profilew.html', {'ProFileW': ProFileW})
+def patientProfileshow(request,id):
+    patientProfileshow = patient_profile.objects.get(id=id)
+    return render(request, 'patientprofilew.html', {'patientProfileshow': patientProfileshow})
 def reviewsw(request):
     return render(request,'reviewsw.html')
 def settings(request):

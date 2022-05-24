@@ -330,8 +330,8 @@
 													<td>#PT015</td>
 													<td>
 														<h2 class="table-avatar">
-															<a href="profilew" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{{p.patient_images.url}}" alt="User Image"></a>
-															<a href="profilew">{{p.first_name}}</a>
+															<a href="{% url 'patientProfileshow' p.id %}" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{{p.patient_images.url}}" alt="User Image"></a>
+															<a href="{% url 'patientProfileshow' p.id %}">{{p.first_name}}</a>
 														</h2>
 													</td>
 													<td>10</td>

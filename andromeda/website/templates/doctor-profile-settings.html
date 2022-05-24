@@ -201,7 +201,7 @@
 											<img src="{% static 'website/img/doctors/doctor-thumb-02.jpg' %}" alt="User Image">
 										</a>
 										<div class="profile-det-info">
-											<h3>Dr. Darren Elder</h3>
+											<h3>{{user}}</h3>
 											
 											<div class="patient-details">
 												<h5 class="mb-0">BDS, MDS - Oral & Maxillofacial Surgery</h5>
@@ -315,13 +315,13 @@
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>Username <span class="text-danger">*</span></label>
-												<input type="text" class="form-control" name="username">
+												<input type="text" class="form-control" name="username" value="{{user.username}}">
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>Email <span class="text-danger">*</span></label>
-												<input type="email" class="form-control" name="email">
+												<input type="email" class="form-control" name="email" value="{{user.email}}">
 											</div>
 										</div>
 										<div class="col-md-6">

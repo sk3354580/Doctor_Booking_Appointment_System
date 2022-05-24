@@ -327,13 +327,13 @@
 												<tr>
 													<td>
 														<h2 class="table-avatar">
-															<a href="profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{{d.doctor_images.url}}" alt="User Image"></a>
-															<a href="profile">{{d.username}}</a>
+															<a href="{% url 'profilew' d.id %}" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{{d.doctor_images.url}}" alt="User Image"></a>
+															<a href="{% url 'profilew' d.id %}">{{d.username}}</a>
 														</h2>
 													</td>
 													<td>{{d.Specialiazation}}</td>
 													
-													<td>15 Feb 2018 <br><small>03.59 AM</small></td>
+													<td>{{d.Year_of_Registeration}}<br><small>03.59 AM</small></td>
 													
 													<td>$3500.00</td>
 													

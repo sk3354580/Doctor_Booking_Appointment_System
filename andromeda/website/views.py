@@ -2,6 +2,8 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from . models import *
+
+from django.db import IntegrityError
 # Create your views here.
 from django.shortcuts import render,redirect,HttpResponse
 from django.contrib import auth
@@ -30,6 +32,7 @@ def chatdoctor(request):
     return render(request,'chat-doctor.html')
 def checkout(request):
     if request.method == 'POST':
+        
         from_time = request.POST['ftime']
         to_time = request.POST['totime']
         date = request.POST['date']
@@ -43,6 +46,7 @@ def checkout(request):
         expire_year = request.POST['expiryyear']
         Cvv = request.POST['cvv']
         card = appointment_booking(
+            
             from_time = from_time,
             to_time = to_time,
             date = date,
@@ -64,6 +68,7 @@ def components(request):
 def doctorchangepassword(request):
     return render(request,'doctor-change-password.html')
 def doctordashboard(request):
+    # return redirect('login')
     return render(request,'doctor-dashboard.html')
 def doctorprofile(request ,id):
     DOctorProFile = doctor_profile.objects.get(id=id)
@@ -71,9 +76,11 @@ def doctorprofile(request ,id):
 def doctorprofilesettings(request):
     special = speciality.objects.all
     if request.method == 'POST':
+        
+        id = request.user
         doctor_images = request.FILES['image']
-        username = request.POST['username']
-        email = request.POST['email']
+        # username = request.POST['username']
+        # email = request.POST['email']
         firstname = request.POST['fname']
         lastname = request.POST['lname']
         phone_number = request.POST['mnumber']
@@ -102,7 +109,8 @@ def doctorprofilesettings(request):
         registrations = request.POST['registrations']
         registrationyear = request.POST['registrationyear']
         clinic_images = request.FILES['clinicimage']
-        b = doctor_profile(username=username,
+        b = doctor_profile(
+                                doctorId =id,
                                doctor_images=doctor_images,
                                first_name=firstname,
                                last_name=lastname,
@@ -129,7 +137,7 @@ def doctorprofilesettings(request):
                                To=to,
                                Year=year,
                                Year_of_Registeration=registrationyear,
-                               email=email,
+                               
                                clinic_images=clinic_images,
                                Postal_code=postalcode,
                                phoneNumber=phone_number)
@@ -164,7 +172,8 @@ def login(request):
         user = auth.authenticate(username=request.POST['username'],password = request.POST['password'])
         if user is not None:
             auth.login(request,user)
-            return HttpResponse('Login Successfull!!')
+            return  redirect('search')
+            # return HttpResponse('Login Successfull!!')
         else:
             return render (request,'login.html', {'error':'Username or password is incorrect!'})
     else:
@@ -175,6 +184,7 @@ def patientdashboard(request):
     return render(request,'patient-dashboard.html')
 def patientprofilesettings(request): 
     if request.method == 'POST':
+        id = request.user
         patient_images = request.FILES['pimage']
         first_name = request.POST['pfname']
         last_name = request.POST['plname']
@@ -188,6 +198,7 @@ def patientprofilesettings(request):
         zip_code =request.POST['pzipcode']
         Country =request.POST['pcountry']
         z = patient_profile(
+            patientId =id,
             patient_images = patient_images,
             first_name = first_name,
             last_name = last_name,
@@ -211,13 +222,19 @@ def patientprofile(request):
 def register(request):
     if request.method == "POST":
         try:
-            User.objects.get(username = request.POST['username'])
-            return render (request,'register.html', {'error':'Username is already taken!'})
-        except User.DoesNotExist:
-            user = User.objects.create_user(request.POST['username'],password=request.POST['password'],email=request.POST['email'],mobile_number=request.POST['mnumber'])
-            user.save()
-            auth.login(request,user)
-            return HttpResponse('signup completed!!')
+            users = user.objects.create_user(username=request.POST['username'], email=request.POST['email'], password = request.POST['password'])
+            users.save()
+        except IntegrityError:
+            return render(request, "register.html", {'message': 'Username already taken.'})
+        return render(request, "register.html")
+        # try:
+        #     user.objects.get(username = request.POST['username'])
+        #     return render (request,'register.html', {'error':'Username is already taken!'})
+        # except User.DoesNotExist:
+        #     users = user.objects.create_user(request.POST['username'],password=request.POST['password'],email=request.POST['email'],mobile_number=request.POST['mnumber'])
+        #     users.save()
+        #     login(request,users)
+        #     return HttpResponse('signup completed!!')
     else:
         return render(request,'register.html')
 def reviews(request):

@@ -44,13 +44,11 @@ class patient(admin.ModelAdmin):
 admin.site.register(patient_profile,patient)
 class booking(admin.ModelAdmin):
     list_display = ('id',
+                    'doctor_id',
+                    'patient_id',
                     'from_time',
                     'to_time',
                     'date',
-                    'first_name',
-                    'last_name',
-                    'email',
-                    'phoneNumber',
                     'Payment_card',
                     'card_number',
                     'expire_month',

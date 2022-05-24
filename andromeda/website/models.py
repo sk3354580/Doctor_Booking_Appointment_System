@@ -1,5 +1,11 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
+from django.contrib.auth.models import AbstractUser
+
+class user(AbstractUser):
+    pass
+
+
 ################search location suggestions
 class Location(models.Model):
     name = models.CharField(max_length=20)
@@ -10,6 +16,7 @@ class speciality(models.Model):
 
 class doctor_profile(models.Model):
     ############basic information
+    doctorId = models.OneToOneField(user, on_delete=models.CASCADE, default='', related_name='doctorId')
     doctor_images = models.ImageField(upload_to='images/')
     username = models.CharField(max_length=50)
     email = models.EmailField(max_length=50)
@@ -52,8 +59,12 @@ class doctor_profile(models.Model):
     #################Registerations #################
     Registrations = models.CharField(max_length=50)
     Year_of_Registeration = models.DateField(max_length=20)
+
+
+
     ####this is patient profile######################
 class patient_profile(models.Model):
+    patientId = models.OneToOneField(user, on_delete=models.CASCADE, default='', related_name='patientId')
     patient_images = models.ImageField(upload_to='images/')
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
@@ -68,14 +79,11 @@ class patient_profile(models.Model):
     Country = models.CharField(max_length=30)
 ########## this is booking section##################
 class appointment_booking(models.Model):
+    doctor_id = models.ForeignKey(doctor_profile, on_delete = models.CASCADE, related_name = "doctor_id")
+    patient_id = models.ForeignKey(patient_profile, on_delete = models.CASCADE, related_name = "patient_id")
     from_time = models.TimeField(max_length=20)
     to_time = models.TimeField(max_length=20)
     date = models.DateField(max_length=10)
-    #############personal Information################
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    email = models.EmailField(max_length=50)
-    phoneNumber = PhoneNumberField(unique=True, blank=False)
     ##########Payment Method #########################
     Payment_card = models.CharField(max_length=50) ##credit or debit
     card_number = models.IntegerField()

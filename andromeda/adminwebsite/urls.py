@@ -1,11 +1,13 @@
 from django.urls import path
 from . import views
 urlpatterns = [
+    path('', views.loginw ,name ="loginw"),
     path('admin', views.admine ,name ="admine"),
     path('appointment-list', views.appointment_list ,name ="appointment_list"),
     path('blank-pagew', views.blank_pagew ,name ="blank_pagew"),
     path('componentsw', views.componentsw ,name ="componentsw"),
     path('data-tables', views.data_tables ,name ="data_tables"),
+    path('doctor_delete/<int:id>', views.doctor_delete,name="doctor_delete"),
     path('doctor-list', views.doctor_list ,name ="doctor_list"),
     path('error-404', views.error_404 ,name ="error_404"),
     path('error-500', views.error_500 ,name ="error_500"),
@@ -19,15 +21,19 @@ urlpatterns = [
     path('invoice-report', views.invoice_report ,name ="invoice_report"),
     path('invoice', views.invoice ,name ="invoice"),
     path('lock-screen', views.lock_screen ,name ="lock_screen"),
-    path('loginw', views.loginw ,name ="loginw"),
+
+    path('adminlogin',views.adminlogin,name="adminlogin"),
     path('patient-list', views.patient_list ,name ="patient_list"),
     path('profilew/<int:id>', views.profilew ,name ="profilew"),
     path('patientProfileshow/<int:id>', views.patientProfileshow ,name ="patientProfileshow"),
+    path('patient_delete/<int:id>',views.patient_delete,name="patient_delete"),
     path('registerw', views.registerw ,name ="registerw"),
     path('reviewsw', views.reviewsw ,name ="reviewsw"),
     path('settings', views.settings ,name ="settings"),
     path('specialities', views.specialities ,name ="specialities"),
+    path('specialities_delete/<int:id>',views.specialities_delete,name="specialities_delete"),
+    path('add_special',views.add_specialities,name="add_special"),
     path('table-basic', views.table_basic ,name ="table_basic"),
     path('transactions-list', views.transactions_list ,name ="transactions_list"),
-    path('logout',views.logout,name="logout"),
+    path('adminlogout',views.logout,name="adminlogout"),
 ]

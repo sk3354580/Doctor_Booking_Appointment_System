@@ -202,7 +202,8 @@
 										<div class="call-contents">
 											<div class="call-content-wrap">
 												<div class="user-video">
-													<img src="{% static 'website/img/video-call.jpg' %}" alt="User Image">
+													<img src = '{% url "feed" %}' width = "500px"  height = "400px" alt="user video">
+													
 												</div>
 												<div class="my-video">
 													<ul>
@@ -242,7 +243,7 @@
 													</li>
 												</ul>
 												<div class="end-call">
-													<a href="javascript:void(0);">
+													<a href="{% url 'doctorprofile' DOctorProFile.id %}">
 														<i class="material-icons">call_end</i>
 													</a>
 												</div>
@@ -252,7 +253,6 @@
 										
 									</div>
 								</div>
-								
 							</div>
 						</div>
 					</div>

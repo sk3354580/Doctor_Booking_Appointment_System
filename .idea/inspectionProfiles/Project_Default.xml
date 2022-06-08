@@ -44,6 +44,10 @@
           <option value="wlan0.views" />
           <option value="andromeda.adminwebsite.models.phonenumber_field" />
           <option value="andromeda.website.models.phonenumber_field" />
+          <option value="andromeda.adminwebsite.views.website" />
+          <option value="andromeda.adminwebsite.views.doctor_profile" />
+          <option value="andromeda.adminwebsite.views.patient_profile" />
+          <option value="andromeda.adminwebsite.views.appointment_booking" />
         </list>
       </option>
     </inspection_tool>

@@ -1,11 +1,20 @@
-from django.shortcuts import render,redirect,HttpResponse
+from django.shortcuts import render,redirect,HttpResponse,HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib import auth
 from website.models import *
+from django.contrib.auth import authenticate, login, logout
 # Create your views here.
+from website.EmailBackEnd import EmailBackEnd
+from website.models import CustomUser
+from django.urls import reverse
+from website.models import speciality
+from django.contrib.auth.decorators import login_required
+
+@login_required(login_url='/adminlogin')
 def admine(request):
     allPatients = patient_profile.objects.all()
     allDoctors = doctor_profile.objects.all()
+    allappointments = appointment_booking.objects.all()
     countappointment = appointment_booking.objects.all().count()
     countdoctor = doctor_profile.objects.all().count()
     countpatient = patient_profile.objects.all().count()
@@ -13,11 +22,13 @@ def admine(request):
                'countdoctor': countdoctor,
                'countappointment':countappointment,
                'allDoctors': allDoctors,
+               'allappointments':allappointments,
                'allPatients':allPatients}
 
     return render(request,'admin.html',context)
 def appointment_list(request):
-    return render(request,'appointment-list.html')
+    allappointments = appointment_booking.objects.all()
+    return render(request,'appointment-list.html',{'allappointments':allappointments})
 def blank_pagew(request):
     return render(request,'blank-pagew.html')
 def componentsw(request):
@@ -51,17 +62,39 @@ def invoice(request):
     return render(request,'invoice.html')
 def lock_screen(request):
     return render(request,'lock-screen.html')
-
+# def loginw(request):
+#     if request.method == 'POST':
+#         user = auth.authenticate(username=request.POST['username'],password = request.POST['password'])
+#         if user is not None:
+#             auth.login(request,user)
+#             return redirect(admine)
+#         else:
+#             return render (request,'loginw.html', {'error':'Username or password is incorrect!'})
+#     else:
+#         return render(request,'loginw.html')
 def loginw(request):
-    if request.method == 'POST':
-        user = auth.authenticate(username=request.POST['username'],password = request.POST['password'])
-        if user is not None:
-            auth.login(request,user)
-            return redirect(admine)
-        else:
-            return render (request,'loginw.html', {'error':'Username or password is incorrect!'})
+    return render(request,'loginw.html')
+
+def adminlogin(request):
+    if request.method!="POST":
+        return HttpResponse("<h2>Method Not Allowed</h2>")
     else:
-        return render(request,'loginw.html')
+        user=EmailBackEnd.authenticate(request,username=request.POST.get("email"),password=request.POST.get("password"))
+        print(user)
+        if user!=None:
+            login(request,user)
+            if user.user_type=="1":
+                return redirect(admine)
+                # return HttpResponse("thi is admin")
+            elif user.user_type=="2":
+                return HttpResponse('you are a doctor you are not authorized to enter admin panel')
+            else:
+                return HttpResponse('you belongs to  patient section .you are not authorized to enter admin panel')
+        else:
+
+            return redirect(loginw)
+
+@login_required(login_url='/adminlogin')
 def patient_list(request):
     patientList = patient_profile.objects.all()
     return render(request,'patient-list.html' ,{'patientList':patientList})
@@ -76,27 +109,51 @@ def reviewsw(request):
 def settings(request):
     return render(request,'settings.html')
 def specialities(request):
-    return render(request,'specialities.html')
+    special = speciality.objects.all()
+    return render(request,'specialities.html',{'special':special})
+def specialities_delete(request, id):
+    spe = speciality.objects.get(id=id)
+    spe.delete()
+    return HttpResponseRedirect(reverse('specialities'))
+def add_specialities(request):
+    if request.method == 'POST':
+        specials = request.POST['specials']
+        spec = speciality(
+            speciality=specials
+        )
+        spec.save()
+        return redirect(specialities)
+    else:
+        return HttpResponse('values are not added')
+
 def table_basic(request):
     return render(request,'table-basic.html')
 def transactions_list(request):
     return render(request,'transactions-list.html')
 def registerw(request):
-    if request.method == "POST":
-        if request.POST['password1'] == request.POST['password2']:
-            try:
-                User.objects.get(username = request.POST['username'])
-                return render (request,'registerw.html', {'error':'Username is already taken!'})
-            except User.DoesNotExist:
-                user = User.objects.create_user(request.POST['username'],password=request.POST['password1'],email=request.POST['email'])
-                auth.login(request,user)
-                return redirect(loginw)
-        else:
-            return render (request,'registerw.html', {'error':'Password does not match!'})
+    if request.method == 'POST':
+        username=request.POST.get("username")
+        email=request.POST.get("email")
+        password=request.POST.get("password")
+        user=CustomUser.objects.create_user(username=username,password=password,email=email,user_type=1)
+        user.save()
+        return HttpResponse('admin singup successffull!!!')
     else:
         return render(request,'registerw.html')
 def logout(request):
-    if request.method == 'POST':
-        auth.logout(request)
-    return HttpResponse('Logout successful!!')
+    auth.logout(request)
+    return HttpResponseRedirect(reverse('loginw'))
+
+def doctor_delete(request, id):
+    a = doctor_profile.objects.get(id=id)
+    print(a.doctor)
+    userselected  = CustomUser.objects.get(id=a.doctor.id)
+    print(a,userselected)
+    userselected.delete()
+
+    return HttpResponseRedirect(reverse('doctor_list'))
+def patient_delete(request, id):
+    pat = patient_profile.objects.get(id=id)
+    pat.delete()
+    return HttpResponseRedirect(reverse('patient_list'))
 

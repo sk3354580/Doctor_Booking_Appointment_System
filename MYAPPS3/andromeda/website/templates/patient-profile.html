@@ -1,0 +1,115 @@
+{% extends 'websitelayout.html' %}
+{% load static %}
+{% block content %}
+			
+			<!-- Page Content -->
+			
+			<div class="content">
+				<div class="container-fluid">
+
+					<div class="row">
+						<div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar dct-dashbd-lft">
+						
+							<!-- Profile Widget -->
+							<div class="card widget-profile pat-widget-profile">
+								<div class="card-body">
+									<div class="pro-widget-content">
+										<div class="profile-info-widget">
+											<a href="#" class="booking-doc-img">
+												<img src="{{PatientProFile.patient_images.url}}" alt="User Image">
+											</a>
+											<div class="profile-det-info">
+												<h3>{{PatientProFile.first_name}}</h3>
+												
+												<div class="patient-details">
+													<h5><b>Patient ID :</b> {{PatientProFile.id}}</h5>
+													<h5 class="mb-0"><i class="fas fa-map-marker-alt"></i> {{PatientProFile.Address}}</h5>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="patient-info">
+										<ul>
+											<li>Phone <span>{{PatientProFile.phoneNumber}}</span></li>
+											<li>Age <span>{{PatientProFile.Date_of_Birth}}</span></li>
+											<li>Blood Group <span>{{PatientProFile.Blood_Group}}</span></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- /Profile Widget -->
+							
+
+						</div>
+
+						<div class="col-md-7 col-lg-8 col-xl-9 dct-appoinment">
+							<div class="card">
+								<div class="card-body pt-0">
+									<div class="user-tabs">
+										<ul class="nav nav-tabs nav-tabs-bottom nav-justified flex-wrap">
+											<li class="nav-item">
+												<a class="nav-link active" href="#pat_appointments" data-toggle="tab">Appointments</a>
+											</li>
+
+										</ul>
+									</div>
+									<div class="tab-content">
+										
+										<!-- Appointment Tab -->
+										<div id="pat_appointments" class="tab-pane fade show active">
+											<div class="card card-table mb-0">
+												<div class="card-body">
+													<div class="table-responsive">
+														<table class="table table-hover table-center mb-0">
+															<thead>
+																<tr>
+																	<th>Doctor</th>
+																	<th>Appt Date</th>
+																	<th>Booking Date</th>
+																	<th>Amount</th>
+																	<th>Follow Up</th>
+
+																	<th></th>
+																</tr>
+															</thead>
+															{% for i in appoints %}
+															<tbody>
+																<tr>
+																	<td>
+																		<h2 class="table-avatar">
+																			<a href="doctor-profile" class="avatar avatar-sm mr-2">
+																				<img class="avatar-img rounded-circle" src="{% static 'website/img/doctors/doctor-thumb-02.jpg' %}" alt="User Image">
+																			</a>
+																			<a href="doctor-profile">{{i.appointment_doctor_id.username}}<span>Dental</span></a>
+																		</h2>
+																	</td>
+																	<td>14 Nov 2019 <span class="d-block text-info">10.00 AM</span></td>
+																	<td>12 Nov 2019</td>
+																	<td>$160</td>
+																	<td>16 Nov 2019</td>
+
+																</tr>
+
+															</tbody>
+															{% endfor %}
+														</table>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- /Appointment Tab -->
+
+												
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>	
+			
+			<!-- /Page Content -->
+   {% include "footer.html" %}
+			{% endblock %}

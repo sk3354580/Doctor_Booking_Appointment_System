@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="{% url 'index' %}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+  <label for="usr">Add New Task :</label>
+  <input type="text" class="form-control" id="usr" name="title">
+</div>
+<button type="submit" class="btn btn-info">submit</button>
+    </form>
+<br>
+{% for i in alltasks %}
+<br>
+
+{{i.title}}
+<a href="{% url 'todoitems' i.id %}"><button class="btn btn-primary">Add Task</button></a>
+<a href="{% url 'alldata' i.id %}"><button class="btn btn-success">View Tasks</button></a>
+<a href="{% url 'task_delete' i.id %}"><button class="btn btn-danger">Delete</button></a>
+
+<br>
+{% endfor %}
+
+{% endblock %}

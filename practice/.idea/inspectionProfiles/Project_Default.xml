@@ -1,0 +1,48 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="wescube.views" />
+          <option value="IntroDJ.IntroDJ.urls.*" />
+          <option value="IntroDJ.views" />
+          <option value="Forms.Forms.urls.views" />
+          <option value="Forms.views" />
+          <option value="ObjectRelationMapper.views" />
+          <option value="wescube.newAp.admin.newAp" />
+          <option value="ObjectRelationMapper.service.admin.service" />
+          <option value="ObjectRelationMapper.ObjectRelationMapper.views.models" />
+          <option value="ObjectRelationMapper.ObjectRelationMapper.views.forms" />
+          <option value="ObjectRelationMapper.ObjectRelationMapper.forms.models" />
+          <option value="wescube.wescube.views.*" />
+          <option value="Admin.views" />
+          <option value="Admin.jim.admin.jim" />
+          <option value="Admin.Admin.views.models" />
+          <option value="Admin.models" />
+          <option value="Admin.Admin.views.jim" />
+          <option value="HOSMANAGEMENT.HOSMANAGEMENT.urls.COMMON_APP" />
+          <option value="HOSMANAGEMENT.COMMON_APP.models.DOCTOR" />
+          <option value="HOSMANAGEMENT.COMMON_APP.models.PATIENT" />
+          <option value="HOSMANAGEMENT.DOCTOR.admin.DOCTOR" />
+          <option value="HOSMANAGEMENT.DOCTOR.models.PATIENT" />
+          <option value="HOSMANAGEMENT.DOCTOR.models.COMMON_APP" />
+          <option value="HOSMANAGEMENT.settings" />
+          <option value="HOSMANAGEMENT.HOSMANAGEMENT.views.PATIENT" />
+          <option value="HOSTMANAGEMENT.HOSTMANAGEMENT.views.ALL" />
+          <option value="HOSTMANAGEMENT.settings" />
+          <option value="HOSTMANAGEMENT.ALL.admin.ALL" />
+          <option value="HOSTMANAGEMENT.views" />
+          <option value="HOSTMANAGEMENT.utils" />
+          <option value="Security.Security.views.dbs" />
+          <option value="Security.views" />
+          <option value="Security.Security.views.Post" />
+          <option value="MyMethod.views" />
+          <option value="MyMethod.MyMethod.views.new" />
+          <option value="calculator.views" />
+          <option value="calculator.calculator.views.sum" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

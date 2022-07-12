@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+</head>
+<body>
+    <h1>Add Menu Details!!</h1>
+    <form action="" method="post">
+        <!-- {%csrf_token%} -->
+        choose pizza name <input type="text" name="pname">
+        quantity : <input type="number" name="quantity">
+        price : <input type="number" name="price">
+        ver or non_veg : <select name="type" id="type">
+            <option value="True">veg</option>
+            <option value="False">non_veg</option>
+        </select>
+        <button type="submit">submit</button>
+      
+
+    </form>
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>name</th>
+            <th>quantity</th>
+            <th>price</th>
+            <th>type</th>
+            </tr>
+            {% for n in names %}
+            <tr>
+                <th>{{n.pname}}</th>
+                <th>{{n.quantity}}</th>
+                <th>{{n.price}}</th>
+                <th>{{n.is_veg}}</th>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="/customer"> go to client</a>
+</body>
+</html>

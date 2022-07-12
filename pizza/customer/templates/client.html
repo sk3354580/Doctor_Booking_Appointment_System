@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client</title>
+</head>
+<body>
+    <form action="" method="post">
+        <!-- {%csrf_token%} -->
+        enter your name <input type="text" name="name">
+        enter your phone number: <input type="text" name="phone">
+        enter your address : <input type="text" name="address">
+        <button type="submit">submit</button>
+        
+    </form>
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>name</th>
+            <th>phone</th>
+            <th>address</th>
+            
+            </tr>
+            {% for n in nam %}
+            <tr>
+                <th>{{n.name}}</th>
+                <th>{{n.phone}}</th>
+                <th>{{n.address}}</th>
+                
+            </tr>
+            {% endfor %}
+        </table>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="table-responsive">
+    <table class="datatable table table-hover table-center mb-0">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Date</th>
+        <th>action</th>
+
+    </tr>
+    </thead>
+{% for i in blog %}
+        <tbody>
+        <tr>
+            <td>{{i.id}}</td>
+            <td><a href="{% url 'BlogsDetailview' i.id %}">{{i.title}}</a></td>
+            <td>{{i.description}}</td>
+            <td>{{i.date}}</td>
+            <td><a href="{% url 'blodsdeleteview' i.id %}"><button class="btn btn-info">delete</button></a></td>
+            <td><a href="{% url 'blogsupdateview' i.id %}"><button class="btn btn-primary">Update</button></a></td>
+        </tr>
+        </tbody>
+{% endfor %}
+        </table>
+</div>
+<a href="{% url 'blogscreateview' %}"><button class="btn btn-info">create blog</button></a>
+{% endblock %}
